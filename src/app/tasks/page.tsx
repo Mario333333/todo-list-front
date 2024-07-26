@@ -1,7 +1,7 @@
 
 import { getAllTasks } from "@/actions";
 import { Task as TaskInterface } from "@/utils/interfaces";
-import { CreateTaskForm } from "../components";
+import { CreateTaskForm, LogOutButton } from "../components";
 import { Task } from "../components/Task/Task";
 
 
@@ -13,6 +13,7 @@ export default async function Home() {
         <h1 className="font-extrabold text-5xl">Tareas</h1>
        
         <CreateTaskForm />
+        <LogOutButton/>
         <div className="grid grid-cols-1   xl:grid-cols-2  2xl:grid-cols-3 gap-5 mb-10">
           {tasks.map((task, index: any) => (
             <Task key={index} task={task}/>

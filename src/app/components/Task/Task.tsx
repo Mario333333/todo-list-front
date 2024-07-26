@@ -29,10 +29,10 @@ export const Task = ({ task }: Props) => {
   const openCurrentTask = async () => {
     await openTask(task._id);
   };
-  
+
   const updateCurrentTask = async () => {
     await updateTask(value, task._id);
-    setEditTask(false)
+    setEditTask(false);
   };
 
   return (
@@ -42,41 +42,41 @@ export const Task = ({ task }: Props) => {
         "rounded-md overflow fade-in bg-slate-200 p-5 border relative z-0 shadow-2xl"
       )}
     >
-      <span
-        className={clsx("rounded-md  fade-inborder text-white p-1 shadow font-bold", {
-          "bg-yellow-400": !task.isClosed,
-          "bg-green-400": task.isClosed,
-        })}
-      >
-        {!task.isClosed ? "Pendiente" : "Completada"}
-      </span>
+      <div className="flex my-2 justify-between items-center">
+        {!edittask ? (
+          <h2 className="font-bold  text-gray-600 ">{task.task}</h2>
+        ) : (
+          <div className="flex flex-col my-2">
+            <input
+              type="text"
+              className="inline py-1 pl-1 border border-gray-300 bg-gray-200 rounded font-medium my-2 text-gray-600 mr-3 shadow focus:outline-none "
+              value={value}
+              onChange={(event) => {
+                setValue(event?.target?.value);
+              }}
+            />
+            <button
+              disabled={false}
+              type="submit"
+              className="bg-green-400 text-white p-1 rounded shadow  w-[100px]"
+              onClick={() => {
+                updateCurrentTask();
+              }}
+            >
+              Actualizar
+            </button>
+          </div>
+        )}
+        <span
+          className={clsx("rounded-md   text-white  shadow font-bold p-1 ", {
+            "bg-yellow-400": !task.isClosed,
+            "bg-green-400": task.isClosed,
+          })}
+        >
+          {!task.isClosed ? "Pendiente" : "Completada"}
+        </span>
+      </div>
 
-      {!edittask ? (
-        <h2 className="font-bold my-2 text-gray-600">{task.task}</h2>
-      ) : (
-        <div className="flex items-center my-2">
-          <input
-            type="text"
-            className="inline py-1 pl-1 border border-gray-300 bg-gray-200 rounded font-medium my-2 text-gray-600 mr-3 shadow focus:outline-none "
-            value={value}
-            onChange={(event)=>{
-              
-              setValue(event?.target?.value)
-            }}
-          />
-          <button
-            disabled={false}
-            type="submit"
-            className="bg-green-400 text-white p-1 rounded shadow"
-            onClick={() => {
-              updateCurrentTask();
-            }}
-            
-          >
-            Actualizar
-          </button>
-        </div>
-      )}
       <div className="flex flex-row justify-between items-center">
         <div className="flex flex-row  items-center">
           <CiEdit
@@ -89,17 +89,28 @@ export const Task = ({ task }: Props) => {
             className="mr-2 text-red-500"
             onClick={deleteCurrentTask}
           />
-          {!task.isClosed ? (
-            <MdOutlinePending
-              className=" mr-2 text-yellow-400"
-              onClick={closeCurrentTask}
-            />
-          ) : (
-            <GoIssueClosed className="mr-2 text-green-400" onClick={openCurrentTask} />
-          )}
+          <button
+            className="flex justify-center items-center"
+            onClick={() => {
+              if (!task.isClosed) {
+                closeCurrentTask();
+              } else {
+                openCurrentTask();
+              }
+            }}
+          >
+            <span className="mr-2">
+              {!task.isClosed ? "Completar" : "Abrir"}
+            </span>
+            {!task.isClosed ? (
+              <MdOutlinePending className=" mr-2 text-yellow-400" />
+            ) : (
+              <GoIssueClosed className="mr-2 text-green-400" />
+            )}
+          </button>
         </div>
       </div>
-
+      <div className="flex-1 border-t border-gray-300 my-5 shadow"></div>
       <div className="py-5 grid grid-cols-1  md:grid-cols-2 gap-10 mb-10  bottom-0">
         {task.subTasks.length > 0 && (
           <div>
@@ -119,13 +130,12 @@ export const Task = ({ task }: Props) => {
           </div>
         )}
       </div>
-     
-      <div className="absolute bottom-0 mb-3">
-      <CreateCommentForm idTask={task._id} />
 
-{!task.isClosed && <CreateSubTaskForm idTask={task._id} />}
+      <div className="absolute bottom-0 mb-3">
+        <CreateCommentForm idTask={task._id} />
+
+        {!task.isClosed && <CreateSubTaskForm idTask={task._id} />}
       </div>
-      
     </div>
   );
 };

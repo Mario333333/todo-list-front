@@ -2,6 +2,7 @@
 
 import { auth } from "@/auth.config";
 import { API_URL } from "@/utils/constants";
+import { revalidateTag } from "next/cache";
 
 export const deleteSubTask = async (idSubTask: string) => {
   const session = await auth();
@@ -26,4 +27,6 @@ export const deleteSubTask = async (idSubTask: string) => {
 
     throw new Error("error");
   }
+  revalidateTag('tasks') 
+
 };
