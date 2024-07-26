@@ -41,7 +41,7 @@ export const CreateTaskForm = () => {
       {isVisible && (
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="bg-white absolute z-11 top-1/2 left-1/2  flex flex-col justify-center  p-20"
+          className="bg-white absolute z-50 top-1/2 left-1/2  flex flex-col justify-center  p-20"
         >
           <IoCloseOutline
             className="absolute top-5 right-5 cursor-pointer"
