@@ -8,11 +8,7 @@ export default async function AuthLayout({
 }: Readonly<{ children: React.ReactNode }>) {
 
 
-// auth  exported from auth config export const { signIn, signOut,auth } = NextAuth(authConfig);
-// function how midddleware py para tener inf in server side 
   const session = await auth();
-  // next revalidate this variable 
-  //session null or object with user data y expires 
    if ( session ) {
      redirect('/')
    }

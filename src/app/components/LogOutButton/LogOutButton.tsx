@@ -7,8 +7,9 @@ export const LogOutButton = () => {
       disabled={false}
       type="submit"
       className="btn-primary transition-all my-20 mx-10"
-      onClick={() => {
-        logOut();
+      onClick={async() => {
+        await logOut();
+        window.location.replace("/");
       }}
     >
       Cerrar Sesion

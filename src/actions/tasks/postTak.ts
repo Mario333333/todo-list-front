@@ -13,7 +13,7 @@ export const postTask = async (data: string) => {
 
   try {
     const url = `${API_URL}task`;
-    console.log(url);
+
 
     const response = await fetch(url, {
       method: "POST",

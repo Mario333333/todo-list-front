@@ -8,10 +8,11 @@ export const getAllTasks = async () => {
 
   const authorization: string = session?.user?.token || "";
   const userId: string = session?.user.userExist?.id || "";
+
   try {
     const url = `${API_URL}task/${userId}/all`;
     const response = await fetch(url, {
-      next: { tags: ['tasks'] },
+      next: { tags: ["tasks"] },
       cache: "no-store",
       headers: {
         Authorization: authorization,

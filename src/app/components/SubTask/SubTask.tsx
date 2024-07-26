@@ -9,9 +9,9 @@ import type { SubTasks } from "@/utils/interfaces";
 import clsx from "clsx";
 import React, { useState } from "react";
 import { CiEdit } from "react-icons/ci";
-import { GoIssueClosed, GoIssueReopened } from "react-icons/go";
-import { IoCloseCircleSharp, IoTrashOutline } from "react-icons/io5";
-import { MdOutlinePending, MdOutlinePendingActions } from "react-icons/md";
+import { GoIssueClosed } from "react-icons/go";
+import { IoTrashOutline } from "react-icons/io5";
+import { MdOutlinePending } from "react-icons/md";
 interface Props {
   subtask: SubTasks;
   taskId: string;

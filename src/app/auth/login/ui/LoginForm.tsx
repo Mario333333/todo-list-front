@@ -13,9 +13,7 @@ export const LoginForm = () => {
 
   useEffect(() => {
     if ( state === 'Success' ) {
-      // redireccionar
-      // router.replace('/');
-      window.location.replace('/');
+      window.location.replace('/tasks');
     }
 
   },[state]);

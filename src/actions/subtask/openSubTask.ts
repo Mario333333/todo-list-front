@@ -14,7 +14,7 @@ export const openSubTask = async (idSubTask: string, idTask: string) => {
 
   try {
     const url = `${API_URL}subtasks/${idSubTask}/${idTask}/open`;
-    console.log(url);
+  
     
     const response = await fetch(url, {
       method: 'POST',

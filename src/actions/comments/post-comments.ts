@@ -15,7 +15,7 @@ export const postComment = async (comment: string, idTask: string) => {
 
   try {
     const url = `${API_URL}comment/${idTask}`;
-    console.log(url);
+  
     
     const response = await fetch(url, {
       method: 'POST',

@@ -73,8 +73,6 @@ export const authConfig = {
         return rest; //anula la autenticacion
       },
     }),
-  ], // Add providers with an empty array for now
+  ], 
 } satisfies NextAuthConfig;
-// signIn function to make sign in in any provider
-// auth is the middleware
 export const { signIn, signOut, auth, handlers } = NextAuth(authConfig);

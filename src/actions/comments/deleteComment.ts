@@ -27,7 +27,5 @@ export const deleteComment = async (idComment: string) => {
 
     throw new Error("error");
   }
-  revalidateTag('tasks') 
-
-
+  revalidateTag("tasks");
 };

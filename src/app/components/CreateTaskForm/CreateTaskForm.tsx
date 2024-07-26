@@ -4,13 +4,13 @@ import React, { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { IoCloseOutline } from "react-icons/io5";
 
-interface Props {}
+
 
 type FormInputs = {
   task: string;
 };
 
-export const CreateTaskForm = ({}: Props) => {
+export const CreateTaskForm = () => {
   const {
     register,
     handleSubmit,

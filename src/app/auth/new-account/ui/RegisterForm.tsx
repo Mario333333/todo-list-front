@@ -4,7 +4,7 @@ import clsx from "clsx";
 import Link from "next/link";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-import { login, registerUser } from "@/actions";
+import {  registerUser } from "@/actions";
 import { useState } from "react";
 
 type FormInputs = {
@@ -34,8 +34,8 @@ export const RegisterForm = () => {
       return;
     }
 
-    await login(email.toLowerCase(), password);
-    window.location.replace("/");
+    window.location.replace("/auth/login")
+
   };
 
   return (

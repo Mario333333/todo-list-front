@@ -13,7 +13,6 @@ export const updateTask = async (data: string, idTask: string) => {
 
   try {
     const url = `${API_URL}task/${idTask}`;
-    console.log(url);
 
     const response = await fetch(url, {
       method: "PATCH",
@@ -31,6 +30,5 @@ export const updateTask = async (data: string, idTask: string) => {
 
     throw new Error("error");
   }
-  revalidateTag('tasks') 
-
+  revalidateTag("tasks");
 };

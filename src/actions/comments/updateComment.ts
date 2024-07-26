@@ -15,7 +15,7 @@ export const updateComment = async (comment: string, idComment: string) => {
 
   try {
     const url = `${API_URL}comment/${idComment}`;
-    console.log(url);
+ 
     
     const response = await fetch(url, {
       method: 'PATCH',

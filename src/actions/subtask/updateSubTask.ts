@@ -5,7 +5,7 @@ import { API_URL } from "@/utils/constants";
 import { revalidateTag } from "next/cache";
 
 export const updateSubTask = async (subtask: string, idSubTask: string) => {
-console.log("data",subtask);
+
 
   const session = await auth();
 
@@ -14,7 +14,7 @@ console.log("data",subtask);
 
   try {
     const url = `${API_URL}subtasks/${idSubTask}`;
-    console.log(url);
+    
     
     const response = await fetch(url, {
       method: 'PATCH',

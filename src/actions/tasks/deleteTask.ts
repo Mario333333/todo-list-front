@@ -8,7 +8,6 @@ export const deleteTask = async (idTask: string) => {
   const session = await auth();
 
   const authorization: string = session?.user?.token || "";
-console.log(`${API_URL}task/${idTask}`);
 
   try {
     const url = `${API_URL}task/${idTask}`;

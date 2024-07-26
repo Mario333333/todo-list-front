@@ -1,11 +1,9 @@
 "use client";
-import {} from "@/actions";
+
 import { postComment } from "@/actions/comments/post-comments";
 import React, { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { IoAddSharp, IoCloseOutline } from "react-icons/io5";
-
-interface Props {}
 
 type FormInputs = {
   comment: string;

@@ -5,7 +5,7 @@ import clsx from "clsx";
 import React, { useState } from "react";
 import { CiEdit } from "react-icons/ci";
 import { GoIssueClosed } from "react-icons/go";
-import { IoCloseCircleSharp, IoTrashOutline } from "react-icons/io5";
+import {  IoTrashOutline } from "react-icons/io5";
 import { SubTask } from "../SubTask/SubTask";
 import { CreateSubTaskForm } from "../CreateSubTaskForm/CreateSubTaskForm";
 import { Comment } from "@/app/components/Comment/Comment";
