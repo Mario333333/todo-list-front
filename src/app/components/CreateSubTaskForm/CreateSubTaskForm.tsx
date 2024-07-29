@@ -43,11 +43,11 @@ export const CreateSubTaskForm = ({ idTask }: { idTask: string }) => {
       {isVisible && (
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="fade-in bg-white absolute bottom-0 flex flex-col justify-center  p-20"
+          className="fade-in bg-white  flex flex-col  justify-center p-20 rounded-xl shadow-2xl absolute  z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 "
         >
           <IoCloseOutline
             className="absolute top-5 right-5 cursor-pointer"
-            size={50}
+            size={30}
             onClick={() => {
               setIsVisible(false);
             }}

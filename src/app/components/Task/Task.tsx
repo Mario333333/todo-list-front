@@ -12,11 +12,13 @@ import { Comment } from "@/app/components/Comment/Comment";
 import { CreateCommentForm } from "../CreateCommentForm/CreateCommentForm";
 import { closeTask, openTask, updateTask } from "@/actions";
 import { MdOutlinePending } from "react-icons/md";
+import { useErrorStore } from "@/store";
 interface Props {
   task: TaskInterface;
 }
 
 export const Task = ({ task }: Props) => {
+  const setError = useErrorStore((state) => state.setError);
   const [edittask, setEditTask] = useState(false);
   const [value, setValue] = useState(task.task);
   const deleteCurrentTask = async () => {
@@ -24,7 +26,12 @@ export const Task = ({ task }: Props) => {
   };
 
   const closeCurrentTask = async () => {
-    await closeTask(task._id);
+   const response =  await closeTask(task._id);
+   console.log(response);
+   
+   if (response && !response.ok) {
+    setError("No se pudo cerrar la tarea")
+   }
   };
   const openCurrentTask = async () => {
     await openTask(task._id);
@@ -39,7 +46,7 @@ export const Task = ({ task }: Props) => {
     <div
       key={task._id}
       className={clsx(
-        "rounded-md overflow fade-in bg-slate-200 p-5 border relative z-0 shadow-2xl"
+        "rounded-md overflow fade-in bg-slate-200 p-5 border  z-0 shadow-2xl"
       )}
     >
       <div className="flex my-2 justify-between items-center">
@@ -68,7 +75,7 @@ export const Task = ({ task }: Props) => {
           </div>
         )}
         <span
-          className={clsx("rounded-md   text-white  shadow font-bold p-1 ", {
+          className={clsx("rounded-md   text-white  shadow font-bold px-1 ", {
             "bg-yellow-400": !task.isClosed,
             "bg-green-400": task.isClosed,
           })}
@@ -131,7 +138,7 @@ export const Task = ({ task }: Props) => {
         )}
       </div>
 
-      <div className="absolute bottom-0 mb-3">
+      <div className=" bottom-0 mb-3">
         <CreateCommentForm idTask={task._id} />
 
         {!task.isClosed && <CreateSubTaskForm idTask={task._id} />}

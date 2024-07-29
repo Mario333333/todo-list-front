@@ -6,7 +6,7 @@ export const LogOutButton = () => {
     <button
       disabled={false}
       type="submit"
-      className="btn-primary transition-all my-20 mx-10"
+      className="bg-gray-500 p-2 rounded-md text-white transition-all shadow-2xl"
       onClick={async() => {
         await logOut();
         window.location.replace("/");

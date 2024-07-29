@@ -9,28 +9,27 @@ export const closeTask = async (idTask: string) => {
 
   const authorization: string = session?.user?.token || "";
 
-
   try {
     const url = `${API_URL}task/${idTask}/close`;
-    
+
     const response = await fetch(url, {
-      method: 'POST',
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: authorization,
-      }
+      },
     });
     if (!response.ok) {
       throw new Error(`Response status: ${response.status}`);
     }
 
-
  
   } catch (error) {
-    console.log(error);
-
-    throw new Error("error");
+    console.log("error", error);
+    return {
+      ok:false
+    }
+   
   }
-  revalidateTag('tasks') 
-
+  revalidateTag("tasks");
 };

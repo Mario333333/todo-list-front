@@ -31,7 +31,7 @@ export const CreateTaskForm = () => {
       <button
         disabled={false}
         type="submit"
-        className="btn-primary transition-all my-20"
+        className="bg-gray-500 p-2 rounded-md text-white transition-all shadow-2xl my-5"
         onClick={() => {
           setIsVisible(true);
         }}
@@ -41,19 +41,19 @@ export const CreateTaskForm = () => {
       {isVisible && (
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="bg-white absolute z-50 top-1/2 left-1/2  flex flex-col justify-center  p-20"
+          className="fade-in bg-white absolute z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col justify-center  p-20 rounded-xl shadow-xl"
         >
           <IoCloseOutline
             className="absolute top-5 right-5 cursor-pointer"
-            size={50}
+            size={30}
             onClick={() => {
               setIsVisible(false);
             }}
           />
-          <label htmlFor="task">Nueva tarea</label>
+          <label htmlFor="task">Titulo de la nueva tarea</label>
           <input
             type="text"
-            className="px-5 py-2 border bg-gray-200 rounded mb-5"
+            className="px-5 py-2 border bg-gray-200 rounded mb-5 mt-2"
             {...register("task", { required: true })}
           />
           <button

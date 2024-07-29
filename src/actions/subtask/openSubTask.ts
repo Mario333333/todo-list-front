@@ -23,16 +23,17 @@ export const openSubTask = async (idSubTask: string, idTask: string) => {
         Authorization: authorization,
       },
     });
+ 
     if (!response.ok) {
       throw new Error(`Response status: ${response.status}`);
     }
-
-
  
   } catch (error) {
     console.log(error);
 
-    throw new Error("error");
+   return {
+    ok: false
+   }
   }
   revalidateTag('tasks') 
 

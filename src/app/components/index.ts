@@ -10,4 +10,5 @@ export * from './SubTask/SubTask';
 export * from './Comment/Comment';
 
 export * from './LogOutButton/LogOutButton';
+export * from './ErrorMessage/ErrorMessage';
 

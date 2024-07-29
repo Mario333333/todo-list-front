@@ -5,6 +5,7 @@ import {
   openSubTask,
   updateSubTask,
 } from "@/actions";
+import { useErrorStore } from "@/store";
 import type { SubTasks } from "@/utils/interfaces";
 import clsx from "clsx";
 import React, { useState } from "react";
@@ -18,6 +19,8 @@ interface Props {
 }
 
 export const SubTask = ({ subtask, taskId }: Props) => {
+  const setError = useErrorStore((state) => state.setError);
+
   const [editSubTask, setEditSubTask] = useState(false);
   const [value, setValue] = useState(subtask.subtask);
   const deleteCurrentSubTask = async () => {
@@ -29,7 +32,12 @@ export const SubTask = ({ subtask, taskId }: Props) => {
   };
 
   const openCurrentSubTask = async () => {
-    await openSubTask(subtask._id, taskId);
+    const response = await openSubTask(subtask._id, taskId);
+console.log(response);
+
+    if (response && !response.ok) {
+      setError("No se pudo abrir actual subtarea")
+    }
   };
 
   const updateCurrentSubTask = async () => {
@@ -39,14 +47,15 @@ export const SubTask = ({ subtask, taskId }: Props) => {
 
   return (
     <div className="flex flex-col justify-between  bg-white rounded mb-3 py-2 px-2 shadow-xl">
+      <div>
       <span
-        className={clsx("rounded-md  fade-inborder text-white p-1 mr-2", {
+        className={clsx("rounded-md  text-white px-1  mr-2 inline", {
           "bg-yellow-400": !subtask.isClosed,
           "bg-green-400": subtask.isClosed,
         })}
       >
         {!subtask.isClosed ? "Pendiente" : "Completada"}
-      </span>
+      </span></div>
       {!editSubTask ? (
         <h2 className="font-medium my-2  text-gray-600">{subtask.subtask}</h2>
       ) : (
